@@ -1,0 +1,17 @@
+apiVersion: spaces.tanzu.vmware.com/v1alpha1
+kind: AvailabilityTarget
+metadata:
+  name: kirkware-aws-client-1-dev
+  description: Availability Target for - aws - client-1 - dev
+  namespace: default
+spec:
+  affinity:
+    clusterAffinity:
+      clusterSelectorTerms:
+      - matchExpressions:
+        - key: kirkware-client-1
+          operator: Exists
+        - key: kirkware-aws
+          operator: Exists
+        - key: kirkware-dev
+          operator: Exists
