@@ -1,7 +1,7 @@
 apiVersion: spaces.tanzu.vmware.com/v1alpha1
 kind: Space
 metadata:
-  name: kw-client-1-music-dev
+  name: kw-music-prod-t1
 spec:
   template:
     spec:
@@ -13,7 +13,7 @@ spec:
           cpu: 5000m
           memory: 10Gi
   availabilityTargets:
-  - name: kirkware-vsphere-client-1-dev
+  - name: kirkware-vsphere-prod-t1
     replicas: 1
   updateStrategy:
     type: RollingUpdate

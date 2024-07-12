@@ -1,0 +1,15 @@
+apiVersion: spaces.tanzu.vmware.com/v1alpha1
+kind: AvailabilityTarget
+metadata:
+  name: kirkware-vsphere-prod-t2
+  description: Availability Target for - vsphere - prod-t2
+  namespace: default
+spec:
+  affinity:
+    clusterAffinity:
+      clusterSelectorTerms:
+      - matchExpressions:
+        - key: kirkware-vsphere
+          operator: Exists
+        - key: kirkware-prod-t2
+          operator: Exists

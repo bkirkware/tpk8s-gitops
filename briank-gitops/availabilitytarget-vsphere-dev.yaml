@@ -1,16 +1,14 @@
 apiVersion: spaces.tanzu.vmware.com/v1alpha1
 kind: AvailabilityTarget
 metadata:
-  name: kirkware-vsphere-client-1-dev
-  description: Availability Target for - vsphere - client-1 - dev
+  name: kirkware-vsphere-dev
+  description: Availability Target for - vsphere - dev
   namespace: default
 spec:
   affinity:
     clusterAffinity:
       clusterSelectorTerms:
       - matchExpressions:
-        - key: kirkware-client-1
-          operator: Exists
         - key: kirkware-vsphere
           operator: Exists
         - key: kirkware-dev
