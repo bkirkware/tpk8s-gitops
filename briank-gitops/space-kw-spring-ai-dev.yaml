@@ -1,7 +1,7 @@
 apiVersion: spaces.tanzu.vmware.com/v1alpha1
 kind: Space
 metadata:
-  name: kw-wfd-prod-t2
+  name: kw-spring-ai-dev
 spec:
   template:
     spec:
@@ -10,10 +10,10 @@ spec:
       - name: kirkware-network-profile
       resources:
         limits:
-          cpu: 5000m
+          cpu: "5"
           memory: 10Gi
   availabilityTargets:
-  - name: kirkware-vsphere-prod-t2
+  - name: kirkware-vsphere-dev
     replicas: 1
   updateStrategy:
     type: RollingUpdate

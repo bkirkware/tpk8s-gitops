@@ -10,7 +10,7 @@ spec:
       - name: kirkware-network-profile
       resources:
         limits:
-          cpu: 5000m
+          cpu: "5"
           memory: 10Gi
   availabilityTargets:
   - name: kirkware-vsphere-dev
