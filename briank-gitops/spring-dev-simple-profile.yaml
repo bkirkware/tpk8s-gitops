@@ -1,0 +1,26 @@
+apiVersion: spaces.tanzu.vmware.com/v1alpha1
+kind: Profile
+metadata:
+  name: "spring-dev-simple"
+spec:
+  description: With Spring Cloud Dev profile, you can take advantage of our Bitnami
+    services and configuration delivered at runtime and enhanced
+    service discovery with mTLS and cert-manager to provide security to Spring applications
+    deployed to the space.
+  requiredCapabilities:
+  - name: bitnami.services.tanzu.vmware.com
+  - name: container-app.tanzu.vmware.com
+  - name: mtls.tanzu.vmware.com
+  - name: package-management.tanzu.vmware.com
+  - name: tanzu-servicebinding.tanzu.vmware.com
+  - name: k8sgateway.tanzu.vmware.com
+  - name: multicloud-ingress.tanzu.vmware.com
+  traits:
+  - alias: carvel-package-installer
+    name: carvel-package-installer.tanzu.vmware.com
+    values:
+      inline: null
+  - alias: observability
+    name: observability.tanzu.vmware.com
+    values:
+      inline: null

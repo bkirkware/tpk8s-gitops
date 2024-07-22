@@ -6,14 +6,14 @@ spec:
   template:
     spec:
       profiles:
-      - name: spring-dev.tanzu.vmware.com
+      - name: spring-dev-simple
       - name: kirkware-network-profile
       resources:
         limits:
           cpu: "5"
           memory: 10Gi
   availabilityTargets:
-  - name: kirkware-vsphere-dev
+  - name: kirkware-azure-dev
     replicas: 1
   updateStrategy:
     type: RollingUpdate

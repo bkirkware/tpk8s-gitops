@@ -1,0 +1,31 @@
+apiVersion: data.packaging.carvel.dev/v1alpha1
+kind: Package
+metadata:
+  annotations:
+    apps.tanzu.vmware.com/promotable: ""
+    apps.tanzu.vmware.com/promote-group: ContainerApp/music
+  creationTimestamp: null
+  name: music.apps.local.20240717.1512.21003
+spec:
+  refName: music.apps.local
+  releasedAt: "2024-07-17T15:13:08Z"
+  template:
+    spec:
+      deploy:
+      - kapp:
+          rawOptions:
+          - --wait=false
+      fetch:
+      - imgpkgBundle:
+          image: harbor.kirkware.net/kirkware-apps/music@sha256:3c5714d6e5c98102afaa8211fc4c0596a23a07348c9ddf8648a33a815373aa9c
+      template:
+      - ytt:
+          paths:
+          - config/
+      - kbld:
+          paths:
+          - .imgpkg/images.yml
+          - '-'
+  valuesSchema:
+    openAPIv3: null
+  version: 20240717.1512.21003

@@ -1,0 +1,84 @@
+apiVersion: apps.tanzu.vmware.com/v1
+kind: ContainerApp
+metadata:
+  annotations:
+    apps.tanzu.vmware.com/promotable: ""
+    apps.tanzu.vmware.com/promote-group: ContainerApp/music
+    containerapp.apps.tanzu.vmware.com/class: kubernetes
+  name: music
+spec:
+  content:
+    buildTimestamp: "2024-07-17T15:12:21Z"
+    gitCommit: 97be2904bd931d807b830f7687b84dcc9918b989-dirty
+    gitURL: github.com/bkirkware/spring-music.git
+    packageRefName: music.apps.local
+    summary: git:97be290 @ 2024-07-17T15:12:21Z
+    version: 20240717.1512.21003
+  image: harbor.kirkware.net/kirkware-apps/music@sha256:33d7d8a413c37a68839d1d3cc82ddc3fb4e027a4479d33313a25b10e4a586bc0
+  nonSecretEnv:
+  - name: JAVA_TOOL_OPTIONS
+    value: -Dmanagement.endpoint.health.probes.add-additional-paths=true -Dmanagement.health.probes.enabled=true
+      -Dserver.port=8080 -Dserver.shutdown.grace-period=24s
+  ports:
+  - name: main
+    port: 8080
+  probes:
+    liveness:
+      httpGet:
+        path: /livez
+        port: 8080
+        scheme: HTTP
+    readiness:
+      httpGet:
+        path: /readyz
+        port: 8080
+        scheme: HTTP
+    startup:
+      failureThreshold: 120
+      httpGet:
+        path: /readyz
+        port: 8080
+        scheme: HTTP
+      initialDelaySeconds: 1
+      periodSeconds: 1
+  relatedRefs:
+  - for: kubernetes.list-replicas
+    kind: Pod
+    labelSelector: containerapp.apps.tanzu.vmware.com/app-name=music
+  - apiGroup: apps
+    for: kubernetes.service-binding-target
+    kind: Deployment
+    name: music
+  - for: kubernetes.service-target
+    kind: Service
+    name: music
+  - for: kubernetes.scale-replicas
+    keyPath: .data['values.yml']->[yaml].replicas
+    kind: Secret
+    name: music-values
+  - for: kubernetes.scale-resources
+    keyPath: .data['values.yml']->[yaml].resources
+    kind: Secret
+    name: music-values
+  - for: kubernetes.set-secret-env
+    keyPath: .data['values.yml']->[yaml].secretEnv
+    kind: Secret
+    name: music-values
+  - apiGroup: packaging.carvel.dev
+    for: kubernetes.delete
+    kind: PackageInstall
+    name: music
+  - apiGroup: data.packaging.carvel.dev
+    for: kubernetes.delete
+    kind: Package
+    name: music.apps.local.20240717.1512.21003
+  - for: kubernetes.delete
+    kind: Secret
+    name: music-values
+  - for: kubernetes.set-content-hash
+    keyPath: .data['values.yml']->[yaml].contentHash
+    kind: Secret
+    name: music-values
+  resources:
+    cpu: 300m
+    memory: 1Gi
