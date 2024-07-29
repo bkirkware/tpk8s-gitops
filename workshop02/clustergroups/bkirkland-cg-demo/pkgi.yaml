@@ -201,42 +201,6 @@ apiVersion: packaging.carvel.dev/v1alpha1
 kind: PackageInstall
 metadata:
   creationTimestamp: null
-  name: fluxcd-source-controller.tanzu.vmware.com
-  namespace: default
-spec:
-  packageRef:
-    refName: fluxcd-source-controller.tanzu.vmware.com
-    versionSelection:
-      constraints: '>0.0.0'
-      prereleases: {}
-  serviceAccountName: default
-status:
-  conditions: null
-  friendlyDescription: ""
-  observedGeneration: 0
----
-apiVersion: packaging.carvel.dev/v1alpha1
-kind: PackageInstall
-metadata:
-  creationTimestamp: null
-  name: fluxcd-helm-controller.tanzu.vmware.com
-  namespace: default
-spec:
-  packageRef:
-    refName: fluxcd-helm-controller.tanzu.vmware.com
-    versionSelection:
-      constraints: '>0.0.0'
-      prereleases: {}
-  serviceAccountName: default
-status:
-  conditions: null
-  friendlyDescription: ""
-  observedGeneration: 0
----
-apiVersion: packaging.carvel.dev/v1alpha1
-kind: PackageInstall
-metadata:
-  creationTimestamp: null
   name: egress.tanzu.vmware.com
   namespace: default
 spec:

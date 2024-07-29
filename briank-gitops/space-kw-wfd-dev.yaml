@@ -1,19 +1,21 @@
 apiVersion: spaces.tanzu.vmware.com/v1alpha1
 kind: Space
 metadata:
-  name: kw-music-prod-t1
+  name: kw-wfd-dev
 spec:
   template:
     spec:
       profiles:
-      - name: spring-dev-simple
+      - name: spring-dev.tanzu.vmware.com
       - name: kirkware-network-profile
       resources:
         limits:
           cpu: "5"
           memory: 10Gi
   availabilityTargets:
-  - name: kirkware-vsphere-prod-t1
+  - name: kirkware-vsphere-dev
+    replicas: 0
+  - name: kirkware-azure-dev
     replicas: 1
   updateStrategy:
     type: RollingUpdate

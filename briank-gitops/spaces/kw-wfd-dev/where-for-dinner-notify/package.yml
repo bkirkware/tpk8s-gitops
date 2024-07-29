@@ -1,0 +1,31 @@
+apiVersion: data.packaging.carvel.dev/v1alpha1
+kind: Package
+metadata:
+  annotations:
+    apps.tanzu.vmware.com/promotable: ""
+    apps.tanzu.vmware.com/promote-group: ContainerApp/where-for-dinner-notify
+  creationTimestamp: null
+  name: where-for-dinner-notify.apps.local.20240725.1928.2204
+spec:
+  refName: where-for-dinner-notify.apps.local
+  releasedAt: "2024-07-25T19:31:31Z"
+  template:
+    spec:
+      deploy:
+      - kapp:
+          rawOptions:
+          - --wait=false
+      fetch:
+      - imgpkgBundle:
+          image: harbor.kirkware.net/kirkware-apps/where-for-dinner-notify@sha256:748845361e523100a2172dad99aef6e74c3b0288e03e206b401bbf635213efad
+      template:
+      - ytt:
+          paths:
+          - config/
+      - kbld:
+          paths:
+          - .imgpkg/images.yml
+          - '-'
+  valuesSchema:
+    openAPIv3: null
+  version: 20240725.1928.2204

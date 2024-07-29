@@ -3,18 +3,18 @@ kind: PackageInstall
 metadata:
   annotations:
     apps.tanzu.vmware.com/promotable: ""
-    apps.tanzu.vmware.com/promote-group: ContainerApp/music
+    apps.tanzu.vmware.com/promote-group: ContainerApp/where-for-dinner-ui
   creationTimestamp: null
-  name: music
+  name: where-for-dinner-ui
 spec:
   packageRef:
-    refName: music.apps.local
+    refName: where-for-dinner-ui.apps.local
     versionSelection:
-      constraints: 20240717.1512.21003
+      constraints: 20240725.1928.2204
   serviceAccountName: carvel-package-installer
   values:
   - secretRef:
-      name: music-values
+      name: where-for-dinner-ui-values
 status:
   conditions: null
   friendlyDescription: ""

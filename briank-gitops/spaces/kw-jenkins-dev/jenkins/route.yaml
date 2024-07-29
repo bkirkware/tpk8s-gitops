@@ -1,9 +1,9 @@
 apiVersion: gateway.networking.k8s.io/v1beta1
 kind: HTTPRoute
 metadata:
-  name: music-route
+  name: jenkins-route
   annotations:
-    healthcheck.gslb.tanzu.vmware.com/service: music
+    healthcheck.gslb.tanzu.vmware.com/service: jenkins
     healthcheck.gslb.tanzu.vmware.com/path: /
     healthcheck.gslb.tanzu.vmware.com/port: "8080"
 spec:
@@ -11,12 +11,12 @@ spec:
   - group: gateway.networking.k8s.io
     kind: Gateway
     name: default-gateway
-    sectionName: https-music-dev
+    sectionName: http-jenkins-dev
   rules:
   - backendRefs:
     - group: ""
       kind: Service
-      name: music
+      name: jenkins
       port: 8080
       weight: 1
     matches:

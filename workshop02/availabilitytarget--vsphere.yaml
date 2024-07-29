@@ -1,0 +1,13 @@
+apiVersion: spaces.tanzu.vmware.com/v1alpha1
+kind: AvailabilityTarget
+metadata:
+  name: bkirkland-vsphere
+  description: Availability Target for - vsphere
+  namespace: default
+spec:
+  affinity:
+    clusterAffinity:
+      clusterSelectorTerms:
+      - matchExpressions:
+        - key: bkirkland-vsphere
+          operator: Exists

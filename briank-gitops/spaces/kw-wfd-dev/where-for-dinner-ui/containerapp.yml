@@ -1,0 +1,61 @@
+apiVersion: apps.tanzu.vmware.com/v1
+kind: ContainerApp
+metadata:
+  annotations:
+    apps.tanzu.vmware.com/promotable: ""
+    apps.tanzu.vmware.com/promote-group: ContainerApp/where-for-dinner-ui
+    containerapp.apps.tanzu.vmware.com/class: kubernetes
+  name: where-for-dinner-ui
+spec:
+  content:
+    buildTimestamp: "2024-07-25T19:28:02Z"
+    gitCommit: 8fb6112c42d26b1ad11840040c8337109364d000-dirty
+    gitURL: github.com/vmware-tanzu/application-accelerator-samples.git
+    packageRefName: where-for-dinner-ui.apps.local
+    summary: git:8fb6112 @ 2024-07-25T19:28:02Z
+    version: 20240725.1928.2204
+  image: harbor.kirkware.net/kirkware-apps/where-for-dinner-ui@sha256:861af648af057c381b2b2c10a7bbe60295e5cd6d912d712752efb61b31a05a61
+  ports:
+  - name: main
+    port: 8080
+  relatedRefs:
+  - for: kubernetes.list-replicas
+    kind: Pod
+    labelSelector: containerapp.apps.tanzu.vmware.com/app-name=where-for-dinner-ui
+  - apiGroup: apps
+    for: kubernetes.service-binding-target
+    kind: Deployment
+    name: where-for-dinner-ui
+  - for: kubernetes.service-target
+    kind: Service
+    name: where-for-dinner-ui
+  - for: kubernetes.scale-replicas
+    keyPath: .data['values.yml']->[yaml].replicas
+    kind: Secret
+    name: where-for-dinner-ui-values
+  - for: kubernetes.scale-resources
+    keyPath: .data['values.yml']->[yaml].resources
+    kind: Secret
+    name: where-for-dinner-ui-values
+  - for: kubernetes.set-secret-env
+    keyPath: .data['values.yml']->[yaml].secretEnv
+    kind: Secret
+    name: where-for-dinner-ui-values
+  - apiGroup: packaging.carvel.dev
+    for: kubernetes.delete
+    kind: PackageInstall
+    name: where-for-dinner-ui
+  - apiGroup: data.packaging.carvel.dev
+    for: kubernetes.delete
+    kind: Package
+    name: where-for-dinner-ui.apps.local.20240725.1928.2204
+  - for: kubernetes.delete
+    kind: Secret
+    name: where-for-dinner-ui-values
+  - for: kubernetes.set-content-hash
+    keyPath: .data['values.yml']->[yaml].contentHash
+    kind: Secret
+    name: where-for-dinner-ui-values
+  resources:
+    cpu: 300m
+    memory: 1Gi

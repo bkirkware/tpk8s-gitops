@@ -3,12 +3,12 @@ kind: Package
 metadata:
   annotations:
     apps.tanzu.vmware.com/promotable: ""
-    apps.tanzu.vmware.com/promote-group: ContainerApp/music
+    apps.tanzu.vmware.com/promote-group: ContainerApp/where-for-dinner-ui
   creationTimestamp: null
-  name: music.apps.local.20240717.1512.21003
+  name: where-for-dinner-ui.apps.local.20240725.1928.2204
 spec:
-  refName: music.apps.local
-  releasedAt: "2024-07-17T15:13:08Z"
+  refName: where-for-dinner-ui.apps.local
+  releasedAt: "2024-07-25T19:34:16Z"
   template:
     spec:
       deploy:
@@ -17,7 +17,7 @@ spec:
           - --wait=false
       fetch:
       - imgpkgBundle:
-          image: harbor.kirkware.net/kirkware-apps/music@sha256:3c5714d6e5c98102afaa8211fc4c0596a23a07348c9ddf8648a33a815373aa9c
+          image: harbor.kirkware.net/kirkware-apps/where-for-dinner-ui@sha256:3f5ae257dd4465941530f4681287440146167ada6ee9640c556b3489bac772fd
       template:
       - ytt:
           paths:
@@ -28,4 +28,4 @@ spec:
           - '-'
   valuesSchema:
     openAPIv3: null
-  version: 20240717.1512.21003
+  version: 20240725.1928.2204

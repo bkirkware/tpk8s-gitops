@@ -5,7 +5,7 @@ kind: Secret
 metadata:
   annotations:
     apps.tanzu.vmware.com/promotable: ""
-    apps.tanzu.vmware.com/promote-group: ContainerApp/music
+    apps.tanzu.vmware.com/promote-group: ContainerApp/where-for-dinner-ui
   creationTimestamp: null
-  name: music-values
+  name: where-for-dinner-ui-values
 type: Opaque

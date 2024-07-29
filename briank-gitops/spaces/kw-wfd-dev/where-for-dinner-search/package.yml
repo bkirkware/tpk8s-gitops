@@ -1,0 +1,31 @@
+apiVersion: data.packaging.carvel.dev/v1alpha1
+kind: Package
+metadata:
+  annotations:
+    apps.tanzu.vmware.com/promotable: ""
+    apps.tanzu.vmware.com/promote-group: ContainerApp/where-for-dinner-search
+  creationTimestamp: null
+  name: where-for-dinner-search.apps.local.20240725.1928.2204
+spec:
+  refName: where-for-dinner-search.apps.local
+  releasedAt: "2024-07-25T19:32:58Z"
+  template:
+    spec:
+      deploy:
+      - kapp:
+          rawOptions:
+          - --wait=false
+      fetch:
+      - imgpkgBundle:
+          image: harbor.kirkware.net/kirkware-apps/where-for-dinner-search@sha256:ac8f38f1653b621af9afbdc3607dbb21be46c2c7ff6642bdeddbfec7f8d83d97
+      template:
+      - ytt:
+          paths:
+          - config/
+      - kbld:
+          paths:
+          - .imgpkg/images.yml
+          - '-'
+  valuesSchema:
+    openAPIv3: null
+  version: 20240725.1928.2204

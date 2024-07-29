@@ -1,0 +1,31 @@
+apiVersion: data.packaging.carvel.dev/v1alpha1
+kind: Package
+metadata:
+  annotations:
+    apps.tanzu.vmware.com/promotable: ""
+    apps.tanzu.vmware.com/promote-group: ContainerApp/where-for-dinner-availability
+  creationTimestamp: null
+  name: where-for-dinner-availability.apps.local.20240725.1928.2204
+spec:
+  refName: where-for-dinner-availability.apps.local
+  releasedAt: "2024-07-25T19:30:09Z"
+  template:
+    spec:
+      deploy:
+      - kapp:
+          rawOptions:
+          - --wait=false
+      fetch:
+      - imgpkgBundle:
+          image: harbor.kirkware.net/kirkware-apps/where-for-dinner-availability@sha256:2dad6ae78f62a41acd447fdc63b195a3a5584ab764db50d2c3039dc44b0e99b8
+      template:
+      - ytt:
+          paths:
+          - config/
+      - kbld:
+          paths:
+          - .imgpkg/images.yml
+          - '-'
+  valuesSchema:
+    openAPIv3: null
+  version: 20240725.1928.2204
