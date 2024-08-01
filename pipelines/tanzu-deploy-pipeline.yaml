@@ -1,5 +1,5 @@
 trigger:
-- main
+- kirkware
 pool:
   vmImage: ubuntu-latest
 variables:
