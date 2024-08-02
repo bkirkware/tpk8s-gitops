@@ -7,7 +7,7 @@ spec:
     spec:
       profiles:
       - name: flux-helm-profile
-      - name: spring-dev.tanzu.vmware.com
+      - name: spring-dev-simple
       - name: kirkware-network-profile
       resources:
         limits:
