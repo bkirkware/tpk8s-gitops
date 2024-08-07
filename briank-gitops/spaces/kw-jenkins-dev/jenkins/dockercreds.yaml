@@ -4,4 +4,4 @@ metadata:
   name: docker-creds
 type: kubernetes.io/dockerconfigjson
 data:
-  .dockerconfigjson: eyJhdXRocyI6eyJkb2NrZXIuaW8iOnsicGFzc3dvcmQiOiIiLCJ1c2VybmFtZSI6IiJ9fX0=
+  .dockerconfigjson: eyJhdXRocyI6eyJkb2NrZXIuaW8iOnsicGFzc3dvcmQiOiJkY2tyX3BhdF9oTFEyeG5MNHBSVWFEcjE5ajk3amxxRS1WUDAiLCJ1c2VybmFtZSI6ImJraXJrd2FyZSJ9fX0=
