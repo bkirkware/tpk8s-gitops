@@ -8,17 +8,17 @@ metadata:
   name: metal
 spec:
   content:
-    buildTimestamp: "2024-08-15T19:59:36Z"
+    buildTimestamp: "2024-08-15T20:27:19Z"
     gitCommit: 7764ee2019b573be9e647f939a624e70acf31798-dirty
     gitURL: github.com/bkirkware/spring-metal.git
-    packageImage: harbor.kirkware.net/kirkware-apps/metal@sha256:6fa4315a7a7a6ed5eb283ebc603320a4418716fd21a20eeb39e9bf2b681f5a4b
+    packageImage: harbor.kirkware.net/kirkware-apps/metal@sha256:45f6852d60cb1043041ab8e321b76262c2193fc3a10712ff3dd9b937066cba8c
     packageRefName: metal.apps.local
-    packageVersion: 20240815.1959.36746
-    summary: git:7764ee2 @ 2024-08-15T19:59:36Z
-    version: 20240815.1959.36746
+    packageVersion: 20240815.2027.19803
+    summary: git:7764ee2 @ 2024-08-15T20:27:19Z
+    version: 20240815.2027.19803
   health:
     maxUnavailableReplicas: 10%
-  image: harbor.kirkware.net/kirkware-apps/metal@sha256:74ddba7acaa111fd621f86b56159c6b902110d3c9da0043f7e329b59b0b7805f
+  image: harbor.kirkware.net/kirkware-apps/metal@sha256:7a736ab869557df925c0e8e5f2ee96e9d8c5e0274af5eb740bd82a9e8fd78a86
   nonSecretEnv:
   - name: JAVA_TOOL_OPTIONS
     value: -Dmanagement.endpoint.health.probes.add-additional-paths=true -Dmanagement.health.probes.enabled=true
@@ -75,7 +75,7 @@ spec:
   - apiGroup: data.packaging.carvel.dev
     for: kubernetes.delete
     kind: Package
-    name: metal.apps.local.20240815.1959.36746
+    name: metal.apps.local.20240815.2027.19803
   - for: kubernetes.delete
     kind: Secret
     name: metal-values

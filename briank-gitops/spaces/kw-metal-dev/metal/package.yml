@@ -5,10 +5,10 @@ metadata:
     apps.tanzu.vmware.com/promotable: ""
     apps.tanzu.vmware.com/promote-group: ContainerApp/metal
   creationTimestamp: null
-  name: metal.apps.local.20240815.1959.36746
+  name: metal.apps.local.20240815.2027.19803
 spec:
   refName: metal.apps.local
-  releasedAt: "2024-08-15T20:01:32Z"
+  releasedAt: "2024-08-15T20:29:17Z"
   template:
     spec:
       deploy:
@@ -17,7 +17,7 @@ spec:
           - --wait=false
       fetch:
       - imgpkgBundle:
-          image: harbor.kirkware.net/kirkware-apps/metal@sha256:6fa4315a7a7a6ed5eb283ebc603320a4418716fd21a20eeb39e9bf2b681f5a4b
+          image: harbor.kirkware.net/kirkware-apps/metal@sha256:45f6852d60cb1043041ab8e321b76262c2193fc3a10712ff3dd9b937066cba8c
       template:
       - ytt:
           paths:
@@ -28,4 +28,4 @@ spec:
           - '-'
   valuesSchema:
     openAPIv3: null
-  version: 20240815.1959.36746
+  version: 20240815.2027.19803
