@@ -10,7 +10,7 @@ spec:
   packageRef:
     refName: metal.apps.local
     versionSelection:
-      constraints: 20240815.2110.6193
+      constraints: 20240815.2121.21947
   serviceAccountName: carvel-package-installer
   values:
   - secretRef:
