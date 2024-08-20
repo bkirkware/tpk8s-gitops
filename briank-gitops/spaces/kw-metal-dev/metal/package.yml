@@ -1,0 +1,31 @@
+apiVersion: data.packaging.carvel.dev/v1alpha1
+kind: Package
+metadata:
+  annotations:
+    apps.tanzu.vmware.com/promotable: ""
+    apps.tanzu.vmware.com/promote-group: ContainerApp/metal
+  creationTimestamp: null
+  name: metal.apps.local.20240815.2121.21947
+spec:
+  refName: metal.apps.local
+  releasedAt: "2024-08-15T21:23:17Z"
+  template:
+    spec:
+      deploy:
+      - kapp:
+          rawOptions:
+          - --wait=false
+      fetch:
+      - imgpkgBundle:
+          image: harbor.kirkware.net/kirkware-apps/metal@sha256:e3111ad41823e600d7ad3c9b1b1bd08ca5937161a3b92000b40400de265913d8
+      template:
+      - ytt:
+          paths:
+          - config/
+      - kbld:
+          paths:
+          - .imgpkg/images.yml
+          - '-'
+  valuesSchema:
+    openAPIv3: null
+  version: 20240815.2121.21947
