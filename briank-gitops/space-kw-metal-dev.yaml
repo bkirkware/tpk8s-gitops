@@ -17,3 +17,12 @@ spec:
     replicas: 1
   updateStrategy:
     type: RollingUpdate
+---
+apiVersion: spaces.tanzu.vmware.com/v1alpha1
+kind: SpaceDisruptionBudget
+metadata:
+  name: kw-metal-dev
+spec:
+  availabilityTargets:
+  - name: kirkware-azure-dev
+    minAvailable: 1
