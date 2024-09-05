@@ -13,7 +13,7 @@ spec:
           cpu: "5"
           memory: 10Gi
   availabilityTargets:
-  - name: kirkware-azure-dev
+  - name: kirkware-vsphere-dev
     replicas: 2
   updateStrategy:
     type: RollingUpdate
@@ -24,5 +24,5 @@ metadata:
   name: kw-metal-dev
 spec:
   availabilityTargets:
-  - name: kirkware-azure-dev
+  - name: kirkware-vsphere-dev
     minAvailable: 1
