@@ -1,0 +1,24 @@
+apiVersion: spaces.tanzu.vmware.com/v1alpha1
+kind: Profile
+metadata:
+  name: "apps"
+spec:
+  description: The Apps profile enables you to deploy applications built as
+    ContainerApps using Tanzu Build.
+  requiredCapabilities:
+  - name: container-app.tanzu.vmware.com
+  - name: package-management.tanzu.vmware.com
+  - name: egress.tanzu.vmware.com
+  - name: ingress.tanzu.vmware.com
+  - name: k8sgateway.tanzu.vmware.com
+  - name: mtls.tanzu.vmware.com
+  - name: tanzu-servicebinding.tanzu.vmware.com
+  traits:
+  - alias: carvel-package-installer
+    name: carvel-package-installer.tanzu.vmware.com
+    values:
+      inline: null
+  - alias: observability
+    name: observability.tanzu.vmware.com
+    values:
+      inline: null
