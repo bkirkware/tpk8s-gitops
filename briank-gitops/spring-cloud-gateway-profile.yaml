@@ -1,0 +1,12 @@
+apiVersion: spaces.tanzu.vmware.com/v1alpha1
+kind: Profile
+metadata:
+  name: "spring-cloud-gateway"
+spec:
+  requiredCapabilities:
+  - name: spring-cloud-gateway.tanzu.vmware.com
+  traits:
+  - alias: api-gateway
+    name: api-gateway.spring.tanzu.vmware.com
+    values:
+      inline: null
