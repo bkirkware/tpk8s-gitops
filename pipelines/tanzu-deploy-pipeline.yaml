@@ -30,12 +30,12 @@ steps:
     script: |
       echo export TANZU_CLI_CEIP_OPT_IN_PROMPT_ANSWER=no
       export TANZU_CLI_CEIP_OPT_IN_PROMPT_ANSWER=no
-      echo wget https://github.com/vmware-tanzu/tanzu-cli/releases/download/v1.3.0/tanzu-cli-linux-amd64.tar.gz -O /tmp/tanzu.tar.gz
-      wget https://github.com/vmware-tanzu/tanzu-cli/releases/download/v1.3.0/tanzu-cli-linux-amd64.tar.gz -O /tmp/tanzu.tar.gz
+      echo wget https://github.com/vmware-tanzu/tanzu-cli/releases/download/v1.4.1/tanzu-cli-linux-amd64.tar.gz -O /tmp/tanzu.tar.gz
+      wget https://github.com/vmware-tanzu/tanzu-cli/releases/download/v1.4.1/tanzu-cli-linux-amd64.tar.gz -O /tmp/tanzu.tar.gz
       echo tar -xvf /tmp/tanzu.tar.gz -C /tmp
       tar -xvf /tmp/tanzu.tar.gz -C /tmp
-      echo install /tmp/v1.3.0/tanzu-cli-linux_amd64 /usr/local/bin/tanzu
-      install /tmp/v1.3.0/tanzu-cli-linux_amd64 /usr/local/bin/tanzu
+      echo install /tmp/v1.4.1/tanzu-cli-linux_amd64 /usr/local/bin/tanzu
+      install /tmp/v1.4.1/tanzu-cli-linux_amd64 /usr/local/bin/tanzu
       echo tanzu config eula accept
       tanzu config eula accept
       echo tanzu plugin install --group vmware-tanzu/app-developer
