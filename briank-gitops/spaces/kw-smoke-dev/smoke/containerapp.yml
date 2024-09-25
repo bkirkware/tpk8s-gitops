@@ -1,0 +1,92 @@
+apiVersion: apps.tanzu.vmware.com/v1
+kind: ContainerApp
+metadata:
+  annotations:
+    apps.tanzu.vmware.com/promotable: ""
+    apps.tanzu.vmware.com/promote-group: ContainerApp/smoke
+    containerapp.apps.tanzu.vmware.com/class: kubernetes
+  name: smoke
+spec:
+  content:
+    buildTimestamp: "2024-09-25T14:49:27Z"
+    gitCommit: d36913dc0b1edf9973d64a62c4a79aa152c4d071-dirty
+    gitURL: github.com/bkirkware/spring-smoketest.git
+    packageImage: harbor.kirkware.net/kirkware-apps/smoke@sha256:97b7c725025b5a74c2a1c8274e1babbf62fee717fc5200d25d0b478356333b13
+    packageRefName: smoke.apps.local
+    packageVersion: 20240925.1449.27504
+    summary: git:d36913d @ 2024-09-25T14:49:27Z
+    version: 20240925.1449.27504
+  health:
+    maxUnavailableReplicas: 10%
+  image: harbor.kirkware.net/kirkware-apps/smoke@sha256:da39d9343d213abfd1231ce683a7823cd4319ce6b6c4e85e0daa8cf5a4d9a15c
+  nonSecretEnv:
+  - name: JAVA_TOOL_OPTIONS
+    value: -Dmanagement.endpoint.health.probes.add-additional-paths=true -Dmanagement.health.probes.enabled=true
+      -Dserver.port=8080 -Dserver.shutdown.grace-period=24s
+  ports:
+  - name: main
+    port: 8080
+  probes:
+    liveness:
+      httpGet:
+        path: /livez
+        port: 8080
+        scheme: HTTP
+    readiness:
+      httpGet:
+        path: /readyz
+        port: 8080
+        scheme: HTTP
+    startup:
+      failureThreshold: 120
+      httpGet:
+        path: /readyz
+        port: 8080
+        scheme: HTTP
+      initialDelaySeconds: 1
+      periodSeconds: 1
+  relatedRefs:
+  - for: kubernetes.list-replicas
+    kind: Pod
+    labelSelector: containerapp.apps.tanzu.vmware.com/app-name=smoke
+  - apiGroup: apps
+    for: kubernetes.service-binding-target
+    kind: Deployment
+    name: smoke
+  - for: kubernetes.service-target
+    kind: Service
+    name: smoke
+  - for: kubernetes.scale-replicas
+    keyPath: .data['values.yml']->[yaml].replicas
+    kind: Secret
+    name: smoke-values
+  - for: kubernetes.scale-resources
+    keyPath: .data['values.yml']->[yaml].resources
+    kind: Secret
+    name: smoke-values
+  - for: kubernetes.set-secret-env
+    keyPath: .data['values.yml']->[yaml].secretEnv
+    kind: Secret
+    name: smoke-values
+  - apiGroup: packaging.carvel.dev
+    for: kubernetes.delete
+    kind: PackageInstall
+    name: smoke
+  - apiGroup: data.packaging.carvel.dev
+    for: kubernetes.delete
+    kind: Package
+    name: smoke.apps.local.20240925.1449.27504
+  - for: kubernetes.delete
+    kind: Secret
+    name: smoke-values
+  - for: kubernetes.set-content-hash
+    keyPath: .data['values.yml']->[yaml].contentHash
+    kind: Secret
+    name: smoke-values
+  - for: kubernetes.set-content-version
+    keyPath: .data['values.yml']->[yaml].contentVersion
+    kind: Secret
+    name: smoke-values
+  resources:
+    cpu: 300m
+    memory: 1Gi
