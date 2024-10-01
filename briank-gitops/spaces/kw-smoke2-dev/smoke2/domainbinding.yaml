@@ -6,6 +6,6 @@ spec:
   autoAssign:
     port: false
     subdomainOf: ""
-  domain: smoke2.dev.kirkware.net
   port: 443
+  domain: smoke2.dev.kirkware.net
   entrypoint: main
