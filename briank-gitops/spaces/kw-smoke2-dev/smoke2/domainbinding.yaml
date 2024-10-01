@@ -7,4 +7,5 @@ spec:
     port: false
     subdomainOf: ""
   domain: smoke2.dev.kirkware.net
+  port: 443
   entrypoint: main
