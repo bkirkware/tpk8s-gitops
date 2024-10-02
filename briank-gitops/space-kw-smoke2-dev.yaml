@@ -7,7 +7,6 @@ spec:
     spec:
       profiles:
       - name: apps
-      - name: kirkware-network-profile
       resources:
         limits:
           cpu: "5"
