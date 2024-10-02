@@ -1,0 +1,27 @@
+apiVersion: spaces.tanzu.vmware.com/v1alpha1
+kind: Space
+metadata:
+  name: kw-smoke-br-demo
+spec:
+  template:
+    spec:
+      profiles:
+      - name: apps
+      resources:
+        limits:
+          cpu: "5"
+          memory: 10Gi
+  availabilityTargets:
+  - name: kirkware-aws-br-demo
+    replicas: 1
+  updateStrategy:
+    type: RollingUpdate
+---
+apiVersion: spaces.tanzu.vmware.com/v1alpha1
+kind: SpaceDisruptionBudget
+metadata:
+  name: kw-smoke-br-demo
+spec:
+  availabilityTargets:
+  - name: kirkware-aws-br-demo
+    minAvailable: 1

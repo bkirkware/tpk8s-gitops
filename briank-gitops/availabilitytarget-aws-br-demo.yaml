@@ -1,0 +1,15 @@
+apiVersion: spaces.tanzu.vmware.com/v1alpha1
+kind: AvailabilityTarget
+metadata:
+  name: kirkware-aws-br-demo
+  description: Availability Target for - aws - br-demo
+  namespace: default
+spec:
+  affinity:
+    clusterAffinity:
+      clusterSelectorTerms:
+      - matchExpressions:
+        - key: kirkware-aws
+          operator: Exists
+        - key: kirkware-br-demo
+          operator: Exists
