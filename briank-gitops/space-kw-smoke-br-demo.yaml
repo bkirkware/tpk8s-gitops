@@ -12,7 +12,7 @@ spec:
           cpu: "5"
           memory: 10Gi
   availabilityTargets:
-  - name: kirkware-aws-br-demo
+  - name: kirkware-vsphere-dev
     replicas: 1
   updateStrategy:
     type: RollingUpdate
@@ -23,5 +23,5 @@ metadata:
   name: kw-smoke-br-demo
 spec:
   availabilityTargets:
-  - name: kirkware-aws-br-demo
+  - name: kirkware-vsphere-dev
     minAvailable: 1
