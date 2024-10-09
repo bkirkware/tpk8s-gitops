@@ -1,0 +1,31 @@
+apiVersion: data.packaging.carvel.dev/v1alpha1
+kind: Package
+metadata:
+  annotations:
+    apps.tanzu.vmware.com/promotable: ""
+    apps.tanzu.vmware.com/promote-group: ContainerApp/petclinic
+  creationTimestamp: null
+  name: petclinic.apps.local.20241009.2051.10124
+spec:
+  refName: petclinic.apps.local
+  releasedAt: "2024-10-09T20:51:38Z"
+  template:
+    spec:
+      deploy:
+      - kapp:
+          rawOptions:
+          - --wait=false
+      fetch:
+      - imgpkgBundle:
+          image: harbor.kirkware.net/kirkware-apps/petclinic@sha256:2b43ee3c098fa4cdda4ea287a490e599dfd458f50be86f00cf9badf7e44442ea
+      template:
+      - ytt:
+          paths:
+          - config/
+      - kbld:
+          paths:
+          - .imgpkg/images.yml
+          - '-'
+  valuesSchema:
+    openAPIv3: null
+  version: 20241009.2051.10124

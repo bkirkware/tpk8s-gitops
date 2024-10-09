@@ -1,0 +1,92 @@
+apiVersion: apps.tanzu.vmware.com/v1
+kind: ContainerApp
+metadata:
+  annotations:
+    apps.tanzu.vmware.com/promotable: ""
+    apps.tanzu.vmware.com/promote-group: ContainerApp/spring-petclinic-aa-demo
+    containerapp.apps.tanzu.vmware.com/class: kubernetes
+  name: spring-petclinic-aa-demo
+spec:
+  content:
+    buildTimestamp: "2024-10-09T20:51:10Z"
+    gitCommit: 1a4d8dcbbb002a3035f7b21b8de44fe68b3a645e-dirty
+    gitURL: github.com/bkirkware/app-advisor-pet-clinic.git
+    packageImage: harbor.kirkware.net/kirkware-apps/spring-petclinic-aa-demo@sha256:4c87061501cd198bfdf93f734bb2a80d15ab4a84c65a619c406a751fbd0f88a8
+    packageRefName: spring-petclinic-aa-demo.apps.local
+    packageVersion: 20241009.2051.10124
+    summary: git:1a4d8dc @ 2024-10-09T20:51:10Z
+    version: 20241009.2051.10124
+  health:
+    maxUnavailableReplicas: 10%
+  image: harbor.kirkware.net/kirkware-apps/spring-petclinic-aa-demo@sha256:0c80ad58b184dbc0b9ddedf6aab5181484d32792e515e608b087819249d356bb
+  nonSecretEnv:
+  - name: JAVA_TOOL_OPTIONS
+    value: -Dmanagement.endpoint.health.probes.add-additional-paths=true -Dmanagement.health.probes.enabled=true
+      -Dserver.port=8080 -Dserver.shutdown.grace-period=24s
+  ports:
+  - name: main
+    port: 8080
+  probes:
+    liveness:
+      httpGet:
+        path: /livez
+        port: 8080
+        scheme: HTTP
+    readiness:
+      httpGet:
+        path: /readyz
+        port: 8080
+        scheme: HTTP
+    startup:
+      failureThreshold: 120
+      httpGet:
+        path: /readyz
+        port: 8080
+        scheme: HTTP
+      initialDelaySeconds: 1
+      periodSeconds: 1
+  relatedRefs:
+  - for: kubernetes.list-replicas
+    kind: Pod
+    labelSelector: containerapp.apps.tanzu.vmware.com/app-name=spring-petclinic-aa-demo
+  - apiGroup: apps
+    for: kubernetes.service-binding-target
+    kind: Deployment
+    name: spring-petclinic-aa-demo
+  - for: kubernetes.service-target
+    kind: Service
+    name: spring-petclinic-aa-demo
+  - for: kubernetes.scale-replicas
+    keyPath: .data['values.yml']->[yaml].replicas
+    kind: Secret
+    name: spring-petclinic-aa-demo-values
+  - for: kubernetes.scale-resources
+    keyPath: .data['values.yml']->[yaml].resources
+    kind: Secret
+    name: spring-petclinic-aa-demo-values
+  - for: kubernetes.set-secret-env
+    keyPath: .data['values.yml']->[yaml].secretEnv
+    kind: Secret
+    name: spring-petclinic-aa-demo-values
+  - apiGroup: packaging.carvel.dev
+    for: kubernetes.delete
+    kind: PackageInstall
+    name: spring-petclinic-aa-demo
+  - apiGroup: data.packaging.carvel.dev
+    for: kubernetes.delete
+    kind: Package
+    name: spring-petclinic-aa-demo.apps.local.20241009.2051.10124
+  - for: kubernetes.delete
+    kind: Secret
+    name: spring-petclinic-aa-demo-values
+  - for: kubernetes.set-content-hash
+    keyPath: .data['values.yml']->[yaml].contentHash
+    kind: Secret
+    name: spring-petclinic-aa-demo-values
+  - for: kubernetes.set-content-version
+    keyPath: .data['values.yml']->[yaml].contentVersion
+    kind: Secret
+    name: spring-petclinic-aa-demo-values
+  resources:
+    cpu: 300m
+    memory: 1Gi

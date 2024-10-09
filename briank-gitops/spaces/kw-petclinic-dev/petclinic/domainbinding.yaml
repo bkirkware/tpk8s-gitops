@@ -1,0 +1,11 @@
+apiVersion: networking.tanzu.vmware.com/v1alpha1
+kind: DomainBinding
+metadata:
+  name: petclinic
+spec:
+  autoAssign:
+    port: false
+    subdomainOf: ""
+  port: 443
+  domain: petclinic.dev.kirkware.net
+  entrypoint: main

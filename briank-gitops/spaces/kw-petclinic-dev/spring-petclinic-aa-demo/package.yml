@@ -1,0 +1,31 @@
+apiVersion: data.packaging.carvel.dev/v1alpha1
+kind: Package
+metadata:
+  annotations:
+    apps.tanzu.vmware.com/promotable: ""
+    apps.tanzu.vmware.com/promote-group: ContainerApp/spring-petclinic-aa-demo
+  creationTimestamp: null
+  name: spring-petclinic-aa-demo.apps.local.20241009.2051.10124
+spec:
+  refName: spring-petclinic-aa-demo.apps.local
+  releasedAt: "2024-10-09T20:52:04Z"
+  template:
+    spec:
+      deploy:
+      - kapp:
+          rawOptions:
+          - --wait=false
+      fetch:
+      - imgpkgBundle:
+          image: harbor.kirkware.net/kirkware-apps/spring-petclinic-aa-demo@sha256:4c87061501cd198bfdf93f734bb2a80d15ab4a84c65a619c406a751fbd0f88a8
+      template:
+      - ytt:
+          paths:
+          - config/
+      - kbld:
+          paths:
+          - .imgpkg/images.yml
+          - '-'
+  valuesSchema:
+    openAPIv3: null
+  version: 20241009.2051.10124
