@@ -1,0 +1,31 @@
+apiVersion: data.packaging.carvel.dev/v1alpha1
+kind: Package
+metadata:
+  annotations:
+    apps.tanzu.vmware.com/promotable: ""
+    apps.tanzu.vmware.com/promote-group: ContainerApp/smoke
+  creationTimestamp: null
+  name: smoke.apps.local.20241010.1353.1921
+spec:
+  refName: smoke.apps.local
+  releasedAt: "2024-10-10T13:53:58Z"
+  template:
+    spec:
+      deploy:
+      - kapp:
+          rawOptions:
+          - --wait=false
+      fetch:
+      - imgpkgBundle:
+          image: harbor.kirkware.net/kirkware-apps/smoke@sha256:7d727e3d923fc39a0d922f190be972015580b4936750749a3ef5bdba412a7b7c
+      template:
+      - ytt:
+          paths:
+          - config/
+      - kbld:
+          paths:
+          - .imgpkg/images.yml
+          - '-'
+  valuesSchema:
+    openAPIv3: null
+  version: 20241010.1353.1921
