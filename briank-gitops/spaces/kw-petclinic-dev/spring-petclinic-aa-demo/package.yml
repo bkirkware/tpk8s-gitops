@@ -5,10 +5,10 @@ metadata:
     apps.tanzu.vmware.com/promotable: ""
     apps.tanzu.vmware.com/promote-group: ContainerApp/spring-petclinic-aa-demo
   creationTimestamp: null
-  name: spring-petclinic-aa-demo.apps.local.20241009.2051.10124
+  name: spring-petclinic-aa-demo.apps.local.20241010.1348.24062
 spec:
   refName: spring-petclinic-aa-demo.apps.local
-  releasedAt: "2024-10-09T20:52:04Z"
+  releasedAt: "2024-10-10T13:49:20Z"
   template:
     spec:
       deploy:
@@ -17,7 +17,7 @@ spec:
           - --wait=false
       fetch:
       - imgpkgBundle:
-          image: harbor.kirkware.net/kirkware-apps/spring-petclinic-aa-demo@sha256:4c87061501cd198bfdf93f734bb2a80d15ab4a84c65a619c406a751fbd0f88a8
+          image: harbor.kirkware.net/kirkware-apps/spring-petclinic-aa-demo@sha256:c9fdff75712ce3b9b145f81348e1592270a275fb8f6bae4e04870c798881df75
       template:
       - ytt:
           paths:
@@ -28,4 +28,4 @@ spec:
           - '-'
   valuesSchema:
     openAPIv3: null
-  version: 20241009.2051.10124
+  version: 20241010.1348.24062

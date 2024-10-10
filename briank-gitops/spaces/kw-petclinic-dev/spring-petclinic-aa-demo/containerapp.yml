@@ -8,17 +8,17 @@ metadata:
   name: spring-petclinic-aa-demo
 spec:
   content:
-    buildTimestamp: "2024-10-09T20:51:10Z"
+    buildTimestamp: "2024-10-10T13:48:24Z"
     gitCommit: 1a4d8dcbbb002a3035f7b21b8de44fe68b3a645e-dirty
     gitURL: github.com/bkirkware/app-advisor-pet-clinic.git
-    packageImage: harbor.kirkware.net/kirkware-apps/spring-petclinic-aa-demo@sha256:4c87061501cd198bfdf93f734bb2a80d15ab4a84c65a619c406a751fbd0f88a8
+    packageImage: harbor.kirkware.net/kirkware-apps/spring-petclinic-aa-demo@sha256:c9fdff75712ce3b9b145f81348e1592270a275fb8f6bae4e04870c798881df75
     packageRefName: spring-petclinic-aa-demo.apps.local
-    packageVersion: 20241009.2051.10124
-    summary: git:1a4d8dc @ 2024-10-09T20:51:10Z
-    version: 20241009.2051.10124
+    packageVersion: 20241010.1348.24062
+    summary: git:1a4d8dc @ 2024-10-10T13:48:24Z
+    version: 20241010.1348.24062
   health:
     maxUnavailableReplicas: 10%
-  image: harbor.kirkware.net/kirkware-apps/spring-petclinic-aa-demo@sha256:0c80ad58b184dbc0b9ddedf6aab5181484d32792e515e608b087819249d356bb
+  image: harbor.kirkware.net/kirkware-apps/spring-petclinic-aa-demo@sha256:ceccd4c4ef8343fb29f87bfabef196743d9b9fe0d2aaf078cf5a0fd0625eae6f
   nonSecretEnv:
   - name: JAVA_TOOL_OPTIONS
     value: -Dmanagement.endpoint.health.probes.add-additional-paths=true -Dmanagement.health.probes.enabled=true
@@ -75,7 +75,7 @@ spec:
   - apiGroup: data.packaging.carvel.dev
     for: kubernetes.delete
     kind: Package
-    name: spring-petclinic-aa-demo.apps.local.20241009.2051.10124
+    name: spring-petclinic-aa-demo.apps.local.20241010.1348.24062
   - for: kubernetes.delete
     kind: Secret
     name: spring-petclinic-aa-demo-values

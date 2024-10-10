@@ -5,10 +5,10 @@ metadata:
     apps.tanzu.vmware.com/promotable: ""
     apps.tanzu.vmware.com/promote-group: ContainerApp/petclinic
   creationTimestamp: null
-  name: petclinic.apps.local.20241009.2051.10124
+  name: petclinic.apps.local.20241010.1348.24062
 spec:
   refName: petclinic.apps.local
-  releasedAt: "2024-10-09T20:51:38Z"
+  releasedAt: "2024-10-10T13:48:55Z"
   template:
     spec:
       deploy:
@@ -17,7 +17,7 @@ spec:
           - --wait=false
       fetch:
       - imgpkgBundle:
-          image: harbor.kirkware.net/kirkware-apps/petclinic@sha256:2b43ee3c098fa4cdda4ea287a490e599dfd458f50be86f00cf9badf7e44442ea
+          image: harbor.kirkware.net/kirkware-apps/petclinic@sha256:f292299e667ef8c0ec75b46e3542424af87091dbcabf5d9198e880bb360d0782
       template:
       - ytt:
           paths:
@@ -28,4 +28,4 @@ spec:
           - '-'
   valuesSchema:
     openAPIv3: null
-  version: 20241009.2051.10124
+  version: 20241010.1348.24062
