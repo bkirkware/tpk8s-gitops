@@ -8,14 +8,14 @@ metadata:
   name: petclinic
 spec:
   content:
-    buildTimestamp: "2024-10-10T13:48:24Z"
+    buildTimestamp: "2024-10-10T14:35:34Z"
     gitCommit: 1a4d8dcbbb002a3035f7b21b8de44fe68b3a645e-dirty
     gitURL: github.com/bkirkware/app-advisor-pet-clinic.git
-    packageImage: harbor.kirkware.net/kirkware-apps/petclinic@sha256:f292299e667ef8c0ec75b46e3542424af87091dbcabf5d9198e880bb360d0782
+    packageImage: harbor.kirkware.net/kirkware-apps/petclinic@sha256:3cfce4937320904a29417a7b8aaf793ba1d3bae5c3f326b87038c699ac2019e7
     packageRefName: petclinic.apps.local
-    packageVersion: 20241010.1348.24062
-    summary: git:1a4d8dc @ 2024-10-10T13:48:24Z
-    version: 20241010.1348.24062
+    packageVersion: 20241010.1435.34206
+    summary: git:1a4d8dc @ 2024-10-10T14:35:34Z
+    version: 20241010.1435.34206
   health:
     maxUnavailableReplicas: 10%
   image: harbor.kirkware.net/kirkware-apps/petclinic@sha256:4a80683522c3d83bfb164b8b867e7466ac9178d8c71e4620eb593db118157b42
@@ -75,7 +75,7 @@ spec:
   - apiGroup: data.packaging.carvel.dev
     for: kubernetes.delete
     kind: Package
-    name: petclinic.apps.local.20241010.1348.24062
+    name: petclinic.apps.local.20241010.1435.34206
   - for: kubernetes.delete
     kind: Secret
     name: petclinic-values

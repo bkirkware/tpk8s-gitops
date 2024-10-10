@@ -10,7 +10,7 @@ spec:
   packageRef:
     refName: spring-petclinic-aa-demo.apps.local
     versionSelection:
-      constraints: 20241010.1348.24062
+      constraints: 20241010.1435.34206
   serviceAccountName: carvel-package-installer
   values:
   - secretRef:
