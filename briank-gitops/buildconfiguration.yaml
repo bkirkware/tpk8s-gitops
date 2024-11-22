@@ -3,6 +3,8 @@ kind: BuildConfiguration
 metadata:
   name: kw-build-config
 spec:
+  apiCredentialSecretRef:
+    name: api-creds
   availabilityTarget: kw-aws
   imageRepositorySecretRefs:
   - name: kw-registry-cred
