@@ -1,0 +1,9 @@
+apiVersion: build.tanzu.vmware.com/v1
+kind: BuildConfiguration
+metadata:
+  name: kw-build-config
+spec:
+  availabilityTarget: kw-aws-dev
+  imageRepositorySecretRefs:
+  - name: kw-registry-cred
+  imageRepositoryTemplate: us-east5-docker.pkg.dev/pa-dpatel/tpk8s-sa-east/{contact.team}/{name}
