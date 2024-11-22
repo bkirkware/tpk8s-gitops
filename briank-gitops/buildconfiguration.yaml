@@ -3,7 +3,7 @@ kind: BuildConfiguration
 metadata:
   name: kw-build-config
 spec:
-  availabilityTarget: kw-aws-dev
+  availabilityTarget: kw-aws
   imageRepositorySecretRefs:
   - name: kw-registry-cred
   imageRepositoryTemplate: us-east5-docker.pkg.dev/pa-dpatel/tpk8s-sa-east/{contact.team}/{name}
