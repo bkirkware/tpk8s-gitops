@@ -3,11 +3,11 @@ apiVersion: packaging.carvel.dev/v1alpha1
 kind: PackageInstall
 metadata:
   creationTimestamp: null
-  name: build.tanzu.vmware.com
+  name: controller.build.tanzu.vmware.com
   namespace: default
 spec:
   packageRef:
-    refName: build.tanzu.vmware.com
+    refName: controller.build.tanzu.vmware.com
     versionSelection:
       constraints: '>0.0.0'
       prereleases: {}
