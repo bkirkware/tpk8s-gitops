@@ -1,7 +1,0 @@
-apiVersion: spaces.tanzu.vmware.com/v1alpha1
-kind: Profile
-metadata:
-  name: "bitnami"
-spec:
-  requiredCapabilities:
-  - name: bitnami.services.tanzu.vmware.com
