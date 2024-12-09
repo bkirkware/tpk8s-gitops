@@ -52,7 +52,7 @@ steps:
   displayName: Deploy Application
   inputs:
     script: |
-      echo git clone $GITOPSREPOURL
+      echo git clone $GITOPSREPOURL -b $GITOPSREPOBRANCH
       git clone $GITOPSREPOURL -b $GITOPSREPOBRANCH
       echo cd tpk8s-gitops/$PROJECT
       cd tpk8s-gitops/$PROJECT
