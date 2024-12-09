@@ -33,7 +33,7 @@ steps:
     script: |
       echo export TANZU_CLI_CEIP_OPT_IN_PROMPT_ANSWER=no
       export TANZU_CLI_CEIP_OPT_IN_PROMPT_ANSWER=no
-      echoexport TANZU_CLI_INCLUDE_DEACTIVATED_PLUGINS_TEST_ONLY=true
+      echo export TANZU_CLI_INCLUDE_DEACTIVATED_PLUGINS_TEST_ONLY=true
       export TANZU_CLI_INCLUDE_DEACTIVATED_PLUGINS_TEST_ONLY=true
       echo wget https://github.com/vmware-tanzu/tanzu-cli/releases/download/v1.5.1/tanzu-cli-linux-amd64.tar.gz -O /tmp/tanzu.tar.gz
       wget https://github.com/vmware-tanzu/tanzu-cli/releases/download/v1.5.1/tanzu-cli-linux-amd64.tar.gz -O /tmp/tanzu.tar.gz
@@ -54,7 +54,7 @@ steps:
   displayName: Deploy Application
   inputs:
     script: |
-      echo git clone $GITOPSREPOURL
+      echo git clone $GITOPSREPOURL -b $GITOPSREPOBRANCH
       git clone $GITOPSREPOURL -b $GITOPSREPOBRANCH
       echo cd tpk8s-gitops/$PROJECT
       cd tpk8s-gitops/$PROJECT
