@@ -49,15 +49,13 @@ steps:
   env:
     TANZU_API_TOKEN: $(TanzuApiToken)
 - task: CmdLine@2
-  displayName: Deploy Application
+  displayName: Tanzu Deploy
   inputs:
     script: |
       echo git clone $GITOPSREPOURL
       git clone $GITOPSREPOURL -b $GITOPSREPOBRANCH
       echo cd tpk8s-gitops/$PROJECT
       cd tpk8s-gitops/$PROJECT
-      echo tanzu build config --build-plan-source-type=ucp --containerapp-registry $CONTAINERREGISTRY --build-plan-source $BUILDPLANSOURCE
-      tanzu build config --build-plan-source-type=ucp --containerapp-registry $CONTAINERREGISTRY --build-plan-source $BUILDPLANSOURCE
 
       echo tanzu project list
       tanzu project list
