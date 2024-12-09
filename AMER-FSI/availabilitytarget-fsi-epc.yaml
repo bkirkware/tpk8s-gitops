@@ -4,12 +4,12 @@ metadata:
   name: fsi-epc
   description: Availability Target for All EPC Clusters
   namespace: default
-  spec:
-    affinity:
-      clusterAffinity:
-        clusterSelectorTerms:
-        - matchExpressions:
-          - key: epc-env
-            operator: In
-            values:
-            - tse-fsi-aviwcp
+spec:
+  affinity:
+    clusterAffinity:
+      clusterSelectorTerms:
+      - matchExpressions:
+        - key: epc-env
+          operator: In
+          values:
+          - tse-fsi-aviwcp
