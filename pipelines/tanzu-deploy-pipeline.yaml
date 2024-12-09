@@ -16,6 +16,9 @@ variables:
 - name: GitopsRepoURL
   value: https://github.com/bkirkware/tpk8s-gitops
   readonly: false
+- name: GitopsRepoBranch
+  value: kwf
+  readonly: false
 steps:
 - checkout: self
   persistCredentials: true
@@ -50,7 +53,7 @@ steps:
   inputs:
     script: |
       echo git clone $GITOPSREPOURL
-      git clone $GITOPSREPOURL
+      git clone $GITOPSREPOURL -b $GITOPSREPOBRANCH
       echo cd tpk8s-gitops/$PROJECT
       cd tpk8s-gitops/$PROJECT
       echo tanzu build config --build-plan-source-type=ucp --containerapp-registry $CONTAINERREGISTRY --build-plan-source $BUILDPLANSOURCE
