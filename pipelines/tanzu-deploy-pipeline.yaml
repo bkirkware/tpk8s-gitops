@@ -1,5 +1,5 @@
 trigger:
-- kwf
+- fsi
 pool:
   vmImage: ubuntu-latest
 variables:
