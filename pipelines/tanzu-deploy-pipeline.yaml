@@ -1,5 +1,5 @@
 trigger:
-- kirkware
+- kw
 pool:
   vmImage: ubuntu-latest
 variables:
@@ -7,7 +7,7 @@ variables:
   value: briank-gitops
   readonly: false
 - name: ContainerRegistry
-  value: harbor.kirkware.net/kirkware-apps/{name}
+  value: us-east5-docker.pkg.dev/pa-dpatel/tpk8s-sa-east/{contact.team}/{name}
 - name: ServiceConnection
   value: tpk8s-registry
 - name: BuildPlanSource
