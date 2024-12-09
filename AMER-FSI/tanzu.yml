@@ -1,6 +1,7 @@
 apiVersion: config.tanzu.vmware.com/v1
-kind: TanzuConfig
 configuration:
-  with: [itself, clustergroups]
+  id: config-e7639df1-57b5-4dc2-9058-d154fa9d25de
   projectRoot:
+    with: [itself, clustergroups]
     uuid: 97c5cbd9-f057-4e37-b455-b8704643f60e
+kind: TanzuConfig
