@@ -1,0 +1,15 @@
+apiVersion: packaging.carvel.dev/v1alpha1
+kind: PackageInstall
+metadata:
+  name: controller.build.tanzu.vmware.com
+  namespace: default
+spec:
+  defaultNamespace: unusable-namespace
+  packageRef:
+    refName: controller.build.tanzu.vmware.com
+    versionSelection:
+      constraints: '>0.0.0'
+  serviceAccountName: pkg-installs-sa
+  values:
+  - secretRef:
+      name: controller.build.tanzu.vmware.com
