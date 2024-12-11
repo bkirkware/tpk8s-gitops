@@ -1,0 +1,98 @@
+apiVersion: apps.tanzu.vmware.com/v1
+kind: ContainerApp
+metadata:
+  annotations:
+    apps.tanzu.vmware.com/promotable: ""
+    apps.tanzu.vmware.com/promote-group: ContainerApp/smoke
+    containerapp.apps.tanzu.vmware.com/class: kubernetes
+  name: smoke
+spec:
+  contact:
+    team: kwf
+  content:
+    buildTimestamp: "2024-12-11T19:27:18Z"
+    gitCommit: d36913dc0b1edf9973d64a62c4a79aa152c4d071-dirty
+    gitURL: github.com/bkirkware/spring-smoketest.git
+    packageImage: us-east5-docker.pkg.dev/pa-dpatel/tpk8s-sa-east/kwf/smoke@sha256:41ce22f2e89e014134b65a5e29547b9945330f905c723c610a2d5f5fd93612d9
+    packageRefName: smoke.apps.local
+    packageVersion: 20241211.1927.18028
+    summary: git:d36913d @ 2024-12-11T19:27:18Z
+    version: 20241211.1927.18028
+  health:
+    maxUnavailableReplicas: 10%
+  image: us-east5-docker.pkg.dev/pa-dpatel/tpk8s-sa-east/kwf/smoke:20241211.1927.18028@sha256:0cb44ba4ba1f7f420648ff0bda19acce1b279510d5897ab7046d983ffd401bd7
+  nonSecretEnv:
+  - name: JAVA_TOOL_OPTIONS
+    value: -Dmanagement.endpoint.health.probes.add-additional-paths=true -Dmanagement.endpoints.web.exposure.include=health,info
+      -Dmanagement.health.probes.enabled=true -Dmanagement.info.build.enabled=true
+      -Dmanagement.info.git.enabled=true -Dmanagement.info.java.enabled=true -Dmanagement.info.os.enabled=true
+      -Dmanagement.info.process.enabled=true -Dmanagement.server.port=8081 -Dserver.port=8080
+      -Dserver.shutdown.grace-period=24s
+  ports:
+  - name: main
+    port: 8080
+    protocol: HTTP
+  probes:
+    liveness:
+      httpGet:
+        path: /livez
+        port: 8080
+        scheme: HTTP
+    readiness:
+      httpGet:
+        path: /readyz
+        port: 8080
+        scheme: HTTP
+    startup:
+      failureThreshold: 120
+      httpGet:
+        path: /readyz
+        port: 8080
+        scheme: HTTP
+      initialDelaySeconds: 1
+      periodSeconds: 1
+  relatedRefs:
+  - for: kubernetes.list-replicas
+    kind: Pod
+    labelSelector: containerapp.apps.tanzu.vmware.com/app-name=smoke
+  - apiGroup: apps
+    for: kubernetes.service-binding-target
+    kind: Deployment
+    name: smoke
+  - for: kubernetes.service-target
+    kind: Service
+    name: smoke
+  - for: kubernetes.scale-replicas
+    keyPath: .data['values.yml']->[yaml].replicas
+    kind: Secret
+    name: smoke-values
+  - for: kubernetes.scale-resources
+    keyPath: .data['values.yml']->[yaml].resources
+    kind: Secret
+    name: smoke-values
+  - for: kubernetes.set-secret-env
+    keyPath: .data['values.yml']->[yaml].secretEnv
+    kind: Secret
+    name: smoke-values
+  - apiGroup: packaging.carvel.dev
+    for: kubernetes.delete
+    kind: PackageInstall
+    name: smoke
+  - apiGroup: data.packaging.carvel.dev
+    for: kubernetes.delete
+    kind: Package
+    name: smoke.apps.local.20241211.1927.18028
+  - for: kubernetes.delete
+    kind: Secret
+    name: smoke-values
+  - for: kubernetes.set-content-hash
+    keyPath: .data['values.yml']->[yaml].contentHash
+    kind: Secret
+    name: smoke-values
+  - for: kubernetes.set-content-version
+    keyPath: .data['values.yml']->[yaml].contentVersion
+    kind: Secret
+    name: smoke-values
+  resources:
+    cpu: 300m
+    memory: 1Gi
