@@ -8,4 +8,4 @@ spec:
     subdomainOf: ""
   port: 443
   domain: smoke-dev.fsi.kirkware.net
-  entrypoint: smoke
+  entrypoint: main
