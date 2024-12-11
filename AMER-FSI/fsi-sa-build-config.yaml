@@ -3,7 +3,7 @@ kind: BuildConfiguration
 metadata:
   name: fsi-sa-build-config
 spec:
-  availabilityTarget: build-eks
+  availabilityTarget: fsi-build
   imageRepositorySecretRefs:
   - name: tpk8s-sa-east-reg
   - name: artifactory-secret-tap-saas
