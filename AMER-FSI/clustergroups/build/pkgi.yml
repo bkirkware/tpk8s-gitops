@@ -10,3 +10,42 @@ spec:
     versionSelection:
       constraints: '>0.0.0'
   serviceAccountName: pkg-installs-sa
+---
+apiVersion: packaging.carvel.dev/v1alpha1
+kind: PackageInstall
+metadata:
+  name: egress.tanzu.vmware.com
+  namespace: default
+spec:
+  defaultNamespace: unusable-namespace
+  packageRef:
+    refName: egress.tanzu.vmware.com
+    versionSelection:
+      constraints: '>0.0.0'
+  serviceAccountName: pkg-installs-sa
+---
+apiVersion: packaging.carvel.dev/v1alpha1
+kind: PackageInstall
+metadata:
+  name: cert-manager.tanzu.vmware.com
+  namespace: default
+spec:
+  defaultNamespace: unusable-namespace
+  packageRef:
+    refName: cert-manager.tanzu.vmware.com
+    versionSelection:
+      constraints: '>0.0.0'
+  serviceAccountName: pkg-installs-sa
+---
+apiVersion: packaging.carvel.dev/v1alpha1
+kind: PackageInstall
+metadata:
+  name: tcs.tanzu.vmware.com
+  namespace: default
+spec:
+  defaultNamespace: unusable-namespace
+  packageRef:
+    refName: tcs.tanzu.vmware.com
+    versionSelection:
+      constraints: '>0.0.0'
+  serviceAccountName: pkg-installs-sa
