@@ -1,7 +1,7 @@
 apiVersion: networking.tanzu.vmware.com/v1alpha1
 kind: DomainBinding
 metadata:
-  name: smoke
+  name: smoke-dev
 spec:
   autoAssign:
     port: false
