@@ -1,0 +1,10 @@
+apiVersion: build.tanzu.vmware.com/v1
+kind: BuildConfiguration
+metadata:
+  name: fsi-sa-build-config
+spec:
+  availabilityTarget: build-eks
+  imageRepositorySecretRefs:
+  - name: tpk8s-sa-east-reg
+  - name: artifactory-secret-tap-saas
+  imageRepositoryTemplate: us-east5-docker.pkg.dev/pa-dpatel/tpk8s-sa-east/{contact.team}/{name}
