@@ -68,5 +68,5 @@ steps:
       echo tanzu project use $PROJECT
       tanzu project use $PROJECT
 
-      echo tanzu deploy --diff --yes
-      tanzu deploy --diff --yes
+      echo tanzu deploy --diff --nested-contexts --yes
+      tanzu deploy --diff --nested-contexts --yes
