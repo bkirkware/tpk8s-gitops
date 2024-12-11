@@ -1,0 +1,15 @@
+apiVersion: spaces.tanzu.vmware.com/v1alpha1
+kind: AvailabilityTarget
+metadata:
+  name: fsi-build
+  description: Availability Target for Platform Builds
+  namespace: default
+spec:
+  affinity:
+    clusterAffinity:
+      clusterSelectorTerms:
+      - matchExpressions:
+        - key: build
+          operator: In
+          values:
+          - true
