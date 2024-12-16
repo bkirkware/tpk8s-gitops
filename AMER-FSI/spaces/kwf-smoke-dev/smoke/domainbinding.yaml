@@ -9,15 +9,3 @@ spec:
   port: 443
   domain: smoke-dev.fsi.kirkware.net
   entrypoint: smoke
----
-apiVersion: networking.tanzu.vmware.com/v1alpha1
-kind: DomainBinding
-metadata:
-  name: smoke
-spec:
-  autoAssign:
-    port: false
-    subdomainOf: ""
-  port: 443
-  domain: smoke.fsi.kirkware.net
-  entrypoint: smoke
