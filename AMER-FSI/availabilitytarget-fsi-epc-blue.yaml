@@ -1,0 +1,19 @@
+apiVersion: spaces.tanzu.vmware.com/v1alpha1
+kind: AvailabilityTarget
+metadata:
+  name: fsi-epc-blue
+  description: Availability Target for Blue EPC Clusters
+  namespace: default
+spec:
+  affinity:
+    clusterAffinity:
+      clusterSelectorTerms:
+      - matchExpressions:
+        - key: epc-env
+          operator: In
+          values:
+          - tse-fsi-aviwcp
+        - key: color
+          operator: In
+          values:
+          - blue
