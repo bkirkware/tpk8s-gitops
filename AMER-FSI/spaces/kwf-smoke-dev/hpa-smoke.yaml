@@ -3,7 +3,7 @@ kind: HorizontalPodAutoscaler
 metadata:
   name: smoke
 spec:
-  maxReplicas: "5"
+  maxReplicas: 5
   metrics:
   - resource:
       name: cpu
@@ -11,7 +11,7 @@ spec:
         averageUtilization: 90%
         type: Utilization
     type: Resource
-  minReplicas: "2"
+  minReplicas: 2
   scaleTargetRef:
     apiVersion: apps.tanzu.vmware.com/v1
     kind: ContainerApp
